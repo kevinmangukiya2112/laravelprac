@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,3 +21,24 @@ Route::get('/', function () {
 Route::get('/login', function() {
     return view('login');
 });
+
+Route::view('/home', 'login');
+
+Route::get('/about/{name}', function($name) {
+    echo $name;
+    return view('about',['name' => $name]);
+});
+
+Route::redirect('/','/login');
+
+Route::get('/about/{name}', function($name) {
+    echo $name;
+    return redirect('/login');
+});
+
+// controllers try and call controller from route and use parameters
+Route::get('user',[UserController::class,'getUser']);
+Route::get('username/{name}',[UserController::class,'getUserName']);
+
+// nested view call in controller
+Route::get('/adminlogin',[UserController::class,'adminLogin']);
