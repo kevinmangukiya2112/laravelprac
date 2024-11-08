@@ -42,3 +42,12 @@ Route::get('username/{name}',[UserController::class,'getUserName']);
 
 // nested view call in controller
 Route::get('/adminlogin',[UserController::class,'adminLogin']);
+
+Route::get('/kevin', function() {
+    $name = 'kevin';
+    $users = ['k','u','a','s','r'];
+    return view('/kevin',['name' => $name,'users' => $users]);
+});
+
+// check view exists or not through controller.
+Route::get('adminkevin',[UserController::class,'checkView']);
