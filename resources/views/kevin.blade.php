@@ -1,4 +1,7 @@
 <div>
+    @include('common.header')
+</div>
+<div>
    here is our kevin view.
 </div>
 <div>
@@ -15,4 +18,8 @@
     @foreach ($users as $user)
     {{$user}}
     @endforeach
+</div>
+<div>
+    @includeif('common.common',['from' =>'from kevin view'])
+    @include('common.inner',['from' =>'from kevin view'])
 </div>
