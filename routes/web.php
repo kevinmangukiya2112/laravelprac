@@ -18,11 +18,11 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/login', function() {
-    return view('login');
+Route::get('/login/{name}', function($name) {
+    return view('login',['name' => $name]);
 });
 
-Route::view('/home', 'login');
+Route::view('/home/{name}', 'login');
 
 Route::get('/about/{name}', function($name) {
     echo $name;
