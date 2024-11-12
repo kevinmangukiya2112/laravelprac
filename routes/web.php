@@ -51,3 +51,9 @@ Route::get('/kevin', function() {
 
 // check view exists or not through controller.
 Route::get('adminkevin',[UserController::class,'checkView']);
+
+Route::view('userform','userform');
+Route::post('adduser',[UserController::class,'addUser']);
+
+Route::view('formhandle','formhandling');
+Route::post('formhandling',[UserController::class,'formhandling']);
