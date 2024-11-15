@@ -3,7 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\NameRouteController;
-
+use App\Http\Controllers\gropprefixController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -64,3 +64,13 @@ Route::view('urlcheck','urlcheck');
 //named route using nmae functionality
 Route::get('nameroute',[NameRouteController::class,'showName']);
 Route::view('homes/nameroute','nameroute')->name('nr');
+
+// Route::get('student/index',[gropprefixController::class,'index']);
+// Route::get('student/second',[gropprefixController::class,'second']);
+// Route::get('student/third',[gropprefixController::class,'third']);
+
+Route::prefix('student')->group(function (){
+    Route::get('/index',[gropprefixController::class,'index']);
+    Route::get('/first',[gropprefixController::class,'first']);
+    Route::get('/second',[gropprefixController::class,'second']);
+});

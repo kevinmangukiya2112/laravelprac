@@ -24,3 +24,12 @@ we can redirect form controller using redirect()->to('view);
     also for named route to_route('namedRoute);
     also we can pass params from controller to namedRoute like to_route('namedRoute',["name"=>"kevin"]);
         now we can easily use these name from params to any view.
+
+we have here group prefix for same prefix routes
+    for example: if i have 100s of routes starting with studen or school or college etc
+        then i can put all of them in same grop prefix so i not need to define prefix every time in their route and also i can find all route at one place.
+        for these we can use simple prefix functionality
+            like: Route::prefix('commonprefix')->group(function(){
+                Route::get('/routeafterprefix1','view or controller');
+                Route::get('/routeafterprefix2','view or controller');
+            })
