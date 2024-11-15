@@ -1,0 +1,26 @@
+We can make new view or controller or component or rule using cmd where we need to use make functionality of artisan services.
+we can get url using URL functionality or url() functionality(URL::current(),URL::previous(),url()->current()).
+We can use view in controller using facades/view functionality.
+we can route to view using Route::view('url','view') OR Route::get('url', function(){
+    return view('view');
+})
+we can route to view with params using Route::view('url/param','view') OR Route::get('url', function($params){
+    return view('view',['param' => $params]); // here we have to use param in view not $params
+})
+we can redirect to any view to another using Route::redirect('redirected','redirect').
+we can make dynamic url using URL functionality functionality(URL::to('view')).
+we can validate form submission using Request object like :: requestobj->validate('inputname' => 'required').
+we can make custom validation rules using new rules or we can publish it by changing default validation massages from lang/en/validation.
+we can use one view in another view direct usinf include functionality of blade templates(@include).
+
+we have @if @else @endif @for @endfor @foreach @endforeach @include {{$variable}} in blade templates for php.
+we can make named route using name function of route (Route::view('url','view')->name('namedRoute)). 
+    // now in any view or controller we can use namedRoute for these view
+
+we can use controller in route file using
+    Route::get('url',[ControllerName::class,'functionname']);
+
+we can redirect form controller using redirect()->to('view);
+    also for named route to_route('namedRoute);
+    also we can pass params from controller to namedRoute like to_route('namedRoute',["name"=>"kevin"]);
+        now we can easily use these name from params to any view.

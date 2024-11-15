@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\NameRouteController;
 
 /*
 |--------------------------------------------------------------------------
@@ -57,3 +58,9 @@ Route::post('adduser',[UserController::class,'addUser']);
 
 Route::view('formhandle','formhandling');
 Route::post('formhandling',[UserController::class,'formhandling']);
+
+Route::view('urlcheck','urlcheck');
+
+//named route using nmae functionality
+Route::get('nameroute',[NameRouteController::class,'showName']);
+Route::view('homes/nameroute','nameroute')->name('nr');

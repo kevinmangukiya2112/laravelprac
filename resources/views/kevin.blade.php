@@ -23,3 +23,7 @@
     @includeif('common.common',['from' =>'from kevin view'])
     @include('common.inner',['from' =>'from kevin view'])
 </div>
+<div>
+    <!-- check previous view -->
+    {{URL::previous()}}
+</div>
