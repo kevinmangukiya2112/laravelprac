@@ -32,4 +32,14 @@ we have here group prefix for same prefix routes
             like: Route::prefix('commonprefix')->group(function(){
                 Route::get('/routeafterprefix1','view or controller');
                 Route::get('/routeafterprefix2','view or controller');
-            })
+            });
+same as prefix we have controller group for routes where same controller for routes
+    for example: if i have one controller and there is lot's of function in it and lot's of routes are using those functions
+        than i can put all the routes in same group of controller so i can easily identify and change same controller routes.
+        for these we can use simple controlelr functionality
+            like: Route::controller(controllername::class)->group(function(){
+                Route::get('route1', 'functionofcontroller1');
+                Route::get('route2', 'functionofcontroller2');
+            });
+
+Here also we can get parameters same as simple routes for both group prefix and group controlelr

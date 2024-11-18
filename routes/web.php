@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\NameRouteController;
 use App\Http\Controllers\gropprefixController;
+use App\Http\Controllers\groupController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -73,4 +74,16 @@ Route::prefix('student')->group(function (){
     Route::get('/index',[gropprefixController::class,'index']);
     Route::get('/first',[gropprefixController::class,'first']);
     Route::get('/second',[gropprefixController::class,'second']);
+});
+
+// controller group routes
+// Route::get('groupcontroller',[groupController::class,'group']);
+// Route::get('groupcontrolleradd',[groupController::class,'groupadd']);
+// Route::get('groupcontrollerdelete',[groupController::class,'groupdelete']);
+
+Route::controller(groupController::class)->group(function(){
+    Route::get('groupcontroller','group');
+    Route::get('groupcontrolleradd','groupadd');
+    Route::get('groupcontrollerdelete','groupdelete');
+    Route::get('groupcontrollername/{name}','groupabout');
 });
