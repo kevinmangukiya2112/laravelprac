@@ -5,6 +5,8 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\NameRouteController;
 use App\Http\Controllers\gropprefixController;
 use App\Http\Controllers\groupController;
+use App\Http\Middleware\AgeCheck;
+use App\Http\Middleware\CheckSecond;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -49,7 +51,7 @@ Route::get('/kevin', function() {
     $name = 'kevin';
     $users = ['k','u','a','s','r'];
     return view('/kevin',['name' => $name,'users' => $users]);
-});
+})->middleware('customGroup');
 
 // check view exists or not through controller.
 Route::get('adminkevin',[UserController::class,'checkView']);
@@ -86,4 +88,14 @@ Route::controller(groupController::class)->group(function(){
     Route::get('groupcontrolleradd','groupadd');
     Route::get('groupcontrollerdelete','groupdelete');
     Route::get('groupcontrollername/{name}','groupabout');
+})->middleware([AgeCheck::class,CheckSecond::class]);
+
+// middleware group and applied on group of controllers
+Route::middleware('customGroup')->group(function(){
+    Route::controller(groupController::class)->group(function(){
+        Route::get('groupcontroller','group');
+        Route::get('groupcontrolleradd','groupadd');
+        Route::get('groupcontrollerdelete','groupdelete');
+        Route::get('groupcontrollername/{name}','groupabout');
+    });
 });

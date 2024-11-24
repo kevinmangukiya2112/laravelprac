@@ -43,3 +43,42 @@ same as prefix we have controller group for routes where same controller for rou
             });
 
 Here also we can get parameters same as simple routes for both group prefix and group controlelr
+
+we can make middleware same as other like view controller we have all middleware in app http middleware folder 
+    in laravel 10 we can use middleware globaly with regestring in kernel.php file and than 
+        use it app->singleton(
+            namespace;
+            function(){
+                return middleware;
+            }
+        )
+    in laravel 11 we can use middleware globaly with with just app->withmiddleware(middleware $middleware){
+        $middleware->append(middlewarename::class);
+    };
+    but for these we need to add it in app.php just by use namespace;
+Also we have $request object of http request we can get params from here in middleware file and we can use our conditions here.
+
+For group middleware in laravel 10 we need to add new group of middleware to kernel file and add middlewares to it 
+In laravel 11 we just have to use $app->withmiddleware(function(middleware $middleware){
+    $middleware->appendtogroup('check1(it a name which we will use for these group)',[
+            middleware1::class,
+            middleware2::class,
+        ]);
+    });
+    same here also for that we need to add middlewares to app.php file and than now we can use these group in web.php file simply by append it after route
+    like these 
+    Route::get('/','view')->middleware('middlewarename or middlewaregroup');
+
+also we can made middleware group same as other group like route prefix and controller group 
+    Route::middleware('middlewarename or middlewaregroup')->group(
+        group of routes or single route on which you want to apply.
+    );
+
+And if we want to apply middleware on specific route and not globaly than we have to first import it in web.php using use namespace;
+    then apply middleware like these: Route::view('route','view')->middleware(middleware::class); // same for using get or post method 
+    and also same we can apply it on group of routes.
+    Also we can apply multiple middlewares on route and group of routes same as these just we have to pass multiple middleware in array 
+    like these: Route::view('route','view')->middleware([middleware1::class,middleware2::class]);
+        but in laravel 10 we have to register every middleware in the middleware\kernel if we want to use single middleware than in $middleware var 
+        or group than add in group of middleware.
+    in laravel 10 we just have to import middleware using use namespace; than add class in middleware at the end of route.

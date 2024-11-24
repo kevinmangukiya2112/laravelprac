@@ -41,6 +41,12 @@ $app->singleton(
     App\Exceptions\Handler::class
 );
 
+$app->singleton(
+    App\Http\Middleware\AgeCheck::class,
+    function ($app) {
+        return new App\Http\Middleware\AgeCheck();
+    }
+);
 /*
 |--------------------------------------------------------------------------
 | Return The Application
