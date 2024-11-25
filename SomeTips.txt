@@ -81,4 +81,29 @@ And if we want to apply middleware on specific route and not globaly than we hav
     like these: Route::view('route','view')->middleware([middleware1::class,middleware2::class]);
         but in laravel 10 we have to register every middleware in the middleware\kernel if we want to use single middleware than in $middleware var 
         or group than add in group of middleware.
-    in laravel 10 we just have to import middleware using use namespace; than add class in middleware at the end of route.
+    in laravel 11 we just have to import middleware using use namespace; than add class in middleware at the end of route.
+
+in laravel we can use migrate to create table also we have to add database type means sql,mongo etc and database name pass url to env file.
+
+than we can made tables using migrate and we can connect to db and perform actions on db using Illuminate\Support\facades\DB;
+    than we just have to use DB::select for example.
+
+here in laravel we call model as eloquent model whihch is similar as model in other framworks
+    also if we have table name like students and we will create model with name student than it will automatic connect to students table also we creates model 
+    with first capital letter.
+    we can easily use model to controller just by call it by name space like \App\Models\Modelname
+        now after model name we can use actions by :: 
+            like ::all() these will fetch all the data from students table.
+            now same as return view with data from controller we can pass these data to view and than show there.
+    
+    Also if we don't have name similarity in table name and model name than we can declare table name in model in protected variable $table = "unsimilar_table";
+Also we can call function from model in controller just we have to call model from controller through it's object 
+    like these: controller function(){
+        $model = new \App\Models\ModelName; //it will return model object
+        $model->functionname(); //it will call function from Models
+    }
+Also same in model
+    like these: view file 
+    {{$model = new \App\Models\ModelName; //it will return model object}}
+    {{$model->functionname(); //it will call function from Models}} 
+    // here just we have to follow blade template syntax and that's all.

@@ -7,6 +7,7 @@ use App\Http\Controllers\gropprefixController;
 use App\Http\Controllers\groupController;
 use App\Http\Middleware\AgeCheck;
 use App\Http\Middleware\CheckSecond;
+use App\Http\Controllers\DbConnectionController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -99,3 +100,6 @@ Route::middleware('customGroup')->group(function(){
         Route::get('groupcontrollername/{name}','groupabout');
     });
 });
+
+Route::get('dbConnect',[DbConnectionController::class,'DbConnect']);
+Route::get('student',[DbConnectionController::class,'students']);
